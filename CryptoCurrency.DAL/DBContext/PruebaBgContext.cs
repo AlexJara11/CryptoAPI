@@ -30,13 +30,16 @@ public partial class PruebaBgContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Criptomonedum>(entity =>
+         modelBuilder.Entity<Criptomonedum>(entity =>
         {
-            entity.HasKey(e => e.Codigo).HasName("PK__Criptomo__06370DAD2454B522");
+            entity.HasKey(e => e.Id).HasName("PK__Criptomo__3214EC07B3F6C4A1"); // Nueva clave primaria
+
+            entity.Property(e => e.Id).ValueGeneratedOnAdd(); // Configuración de Identity
 
             entity.Property(e => e.Codigo)
                 .HasMaxLength(50)
-                .IsUnicode(false);
+                .IsUnicode(false)
+                .IsRequired();
             entity.Property(e => e.Descripcion)
                 .HasMaxLength(255)
                 .IsUnicode(false);
@@ -49,6 +52,8 @@ public partial class PruebaBgContext : DbContext
             entity.Property(e => e.Symbol)
                 .HasMaxLength(100)
                 .IsUnicode(false);
+
+            entity.HasIndex(e => e.Codigo).IsUnique(); // Índice único para Codigo
         });
 
         modelBuilder.Entity<Menu>(entity =>

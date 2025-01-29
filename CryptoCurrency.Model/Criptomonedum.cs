@@ -5,6 +5,8 @@ namespace CryptoCurrency.Model;
 
 public partial class Criptomonedum
 {
+    public int Id { get; set; } // Nuevo campo Id
+
     public string Codigo { get; set; } = null!;
 
     public string? Nombre { get; set; }
