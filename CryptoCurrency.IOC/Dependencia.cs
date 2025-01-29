@@ -1,4 +1,6 @@
-﻿using CryptoCurrency.DAL.DBContext;
+﻿using CryptoCurrency.BLL.Servicios.Contrato;
+using CryptoCurrency.BLL.Servicios;
+using CryptoCurrency.DAL.DBContext;
 using CryptoCurrency.DAL.Repositorios;
 using CryptoCurrency.DAL.Repositorios.Contrato;
 using CryptoCurrency.Utility;
@@ -18,6 +20,9 @@ namespace CryptoCurrency.IOC
             });
             service.AddTransient(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             service.AddAutoMapper(typeof(AutoMapperProfile));
+            service.AddScoped<IRolService, RolService>();
+            service.AddScoped<IUsuarioService, UsuarioService>();
+            service.AddScoped<IMenuService, MenuService>();
         }
     }
 }
