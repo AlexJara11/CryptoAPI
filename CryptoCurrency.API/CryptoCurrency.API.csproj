@@ -10,4 +10,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CryptoCurrency.BLL\CryptoCurrency.BLL.csproj" />
+    <ProjectReference Include="..\CryptoCurrency.DTO\CryptoCurrency.DTO.csproj" />
+    <ProjectReference Include="..\CryptoCurrency.IOC\CryptoCurrency.IOC.csproj" />
+  </ItemGroup>
+
 </Project>

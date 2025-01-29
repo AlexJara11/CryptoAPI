@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CryptoCurrency.Model\CryptoCurrency.Model.csproj" />
+  </ItemGroup>
+
 </Project>
