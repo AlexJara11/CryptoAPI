@@ -71,13 +71,13 @@ namespace CryptoCurrency.API.Controllers
         }
         [HttpDelete]
         [Route("Eliminar/{id:int}")]
-        public async Task<IActionResult> Eliminar(int id)
+        public async Task<IActionResult> Eliminar(string codigoId)
         {
             var rsp = new Response<bool>();
             try
             {
                 rsp.status = true;
-                rsp.value = await _criptoMonedaService.Eliminar(id);
+                rsp.value = await _criptoMonedaService.Eliminar(codigoId);
             }
             catch (Exception ex)
             {

@@ -12,6 +12,6 @@ namespace CryptoCurrency.BLL.Servicios.Contrato
         Task<List<CriptomonedumDTO>> Lista();
         Task<CriptomonedumDTO> Crear(CriptomonedumDTO modelo);
         Task<bool> Editar(CriptomonedumDTO modelo);
-        Task<bool> Eliminar(int id);
+        Task<bool> Eliminar(string codigoId);
     }
 }

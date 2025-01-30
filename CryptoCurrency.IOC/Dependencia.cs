@@ -24,6 +24,8 @@ namespace CryptoCurrency.IOC
             service.AddScoped<IUsuarioService, UsuarioService>();
             service.AddScoped<IMenuService, MenuService>();
             service.AddScoped<ICriptoMonedaService, CriptoMonedaService>();
+            // Configuración de HttpClient
+            service.AddHttpClient<ICriptoMonedaService, CriptoMonedaService>();
         }
     }
 }
