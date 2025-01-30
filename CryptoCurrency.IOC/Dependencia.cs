@@ -23,6 +23,7 @@ namespace CryptoCurrency.IOC
             service.AddScoped<IRolService, RolService>();
             service.AddScoped<IUsuarioService, UsuarioService>();
             service.AddScoped<IMenuService, MenuService>();
+            service.AddScoped<ICriptoMonedaService, CriptoMonedaService>();
         }
     }
 }
