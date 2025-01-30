@@ -54,13 +54,13 @@ namespace CryptoCurrency.API.Controllers
 
         [HttpPut]
         [Route("Editar")]
-        public async Task<IActionResult> Editar([FromBody] CriptomonedumDTO producto)
+        public async Task<IActionResult> Editar([FromBody] CriptomonedumDTO criptomonedum)
         {
             var rsp = new Response<bool>();
             try
             {
                 rsp.status = true;
-                rsp.value = await _criptoMonedaService.Editar(producto);
+                rsp.value = await _criptoMonedaService.Editar(criptomonedum);
             }
             catch (Exception ex)
             {
@@ -70,14 +70,14 @@ namespace CryptoCurrency.API.Controllers
             return Ok(rsp);
         }
         [HttpDelete]
-        [Route("Eliminar/{id:int}")]
-        public async Task<IActionResult> Eliminar(string codigoId)
+        [Route("Eliminar/{codigo}")]
+        public async Task<IActionResult> Eliminar(string codigo)
         {
             var rsp = new Response<bool>();
             try
             {
                 rsp.status = true;
-                rsp.value = await _criptoMonedaService.Eliminar(codigoId);
+                rsp.value = await _criptoMonedaService.Eliminar(codigo);
             }
             catch (Exception ex)
             {

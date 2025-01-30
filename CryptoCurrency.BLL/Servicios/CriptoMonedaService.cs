@@ -55,7 +55,7 @@ namespace CryptoCurrency.BLL.Servicios
                 //// Convertir el diccionario en una lista combinada
                 //var listaCombinada = diccionarioCriptomonedas.Values.ToList();
                 // Convertir el diccionario en una lista combinada y tomar los primeros 5 registros
-                var listaCombinada = diccionarioCriptomonedas.Values.Take(5).ToList();
+                var listaCombinada = diccionarioCriptomonedas.Values.Take(100).ToList();
 
                 return listaCombinada;
             }
@@ -88,7 +88,7 @@ namespace CryptoCurrency.BLL.Servicios
             try
             {
                 var criptoMonedaModelo = _mapper.Map<Criptomonedum>(modelo);
-                var criptoMonedaEncontrado = await _criptomonedumRepository.Obtener(criptoMoneda => criptoMoneda.Id == criptoMonedaModelo.Id);
+                var criptoMonedaEncontrado = await _criptomonedumRepository.Obtener(criptoMoneda => criptoMoneda.Codigo == criptoMonedaModelo.Codigo);
                 if(criptoMonedaEncontrado == null)
                 {
                     var criptoMonedaCreado = await _criptomonedumRepository.Crear(_mapper.Map<Criptomonedum>(modelo));
