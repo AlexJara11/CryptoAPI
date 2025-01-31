@@ -7,6 +7,7 @@ using CryptoCurrency.Utility;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using CryptoCurrency.BLL.Configuracion;
 
 namespace CryptoCurrency.IOC
 {
@@ -26,6 +27,8 @@ namespace CryptoCurrency.IOC
             service.AddScoped<ICriptoMonedaService, CriptoMonedaService>();
             // Configuración de HttpClient
             service.AddHttpClient<ICriptoMonedaService, CriptoMonedaService>();
+            // Registrar configuración ApiSettings en el contenedor de dependencias
+            service.Configure<ApiSettings>(configuration.GetSection("ApiSettings"));
         }
     }
 }

@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using CryptoCurrency.BLL.Configuracion;
 using CryptoCurrency.BLL.Servicios.Contrato;
 using CryptoCurrency.DAL.Repositorios.Contrato;
 using CryptoCurrency.DTO;
 using CryptoCurrency.Model;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -19,12 +21,14 @@ namespace CryptoCurrency.BLL.Servicios
         private readonly IGenericRepository<Criptomonedum> _criptomonedumRepository;
         private readonly IMapper _mapper;
         private readonly HttpClient _httpClient;
+        private readonly string _cryptoApiUrl;
 
-        public CriptoMonedaService(IGenericRepository<Criptomonedum> criptomonedumRepository, IMapper mapper, HttpClient httpClient)
+        public CriptoMonedaService(IGenericRepository<Criptomonedum> criptomonedumRepository, IMapper mapper, HttpClient httpClient, IOptions<ApiSettings> apiSettings)
         {
             _criptomonedumRepository = criptomonedumRepository;
             _mapper = mapper;
             _httpClient = httpClient;
+            _cryptoApiUrl = apiSettings.Value.CryptoApiUrl;
         }
         public async Task<List<CriptomonedumDTO>> Lista()
         {
@@ -133,7 +137,7 @@ namespace CryptoCurrency.BLL.Servicios
         {
             try
             {
-                var response = await _httpClient.GetAsync("https://api.coingecko.com/api/v3/coins/list");
+                var response = await _httpClient.GetAsync(_cryptoApiUrl);
                 response.EnsureSuccessStatusCode();
 
                 var responseBody = await response.Content.ReadAsStringAsync();
